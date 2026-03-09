@@ -59,8 +59,7 @@ const Header = () => {
             <img
               src={azamiLogo}
               alt="AZAMI MODAS"
-              className="h-8 md:h-12 w-auto object-contain"
-              style={{ filter: "brightness(0)" }}
+              className="h-8 md:h-12 w-auto object-contain rounded-sm"
             />
           </Link>
 
