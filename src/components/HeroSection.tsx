@@ -53,19 +53,19 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.0 }}
-            className="flex flex-col sm:flex-row gap-3"
+            className="flex flex-col sm:flex-row items-center gap-5 sm:gap-6"
           >
             <a
               href="#night"
-              className="font-body text-[10px] tracking-[0.2em] uppercase bg-primary text-primary-foreground px-7 py-3.5 text-center hover:bg-primary/90 transition-all duration-300"
+              className="font-body text-[10px] tracking-[0.3em] uppercase bg-primary text-primary-foreground px-9 py-4 text-center hover:bg-primary/85 transition-all duration-400 hover:shadow-gold"
             >
-              Garantir meu Look
+              Conferir Colecção
             </a>
             <a
-              href="#beach"
-              className="font-body text-[10px] tracking-[0.2em] uppercase border border-foreground/20 text-foreground px-7 py-3.5 text-center hover:border-primary hover:text-primary transition-all duration-300"
+              href="#bestsellers"
+              className="font-display text-sm md:text-base italic text-foreground/80 hover:text-primary border-b border-foreground/20 hover:border-primary pb-0.5 transition-all duration-400"
             >
-              Ver Disponibilidade
+              Mais Vendidos
             </a>
           </motion.div>
         </div>
