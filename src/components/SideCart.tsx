@@ -1,0 +1,142 @@
+import { X, Minus, Plus, ShoppingBag } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useCart } from "@/context/CartContext";
+import { formatPrice } from "@/data/products";
+
+const SideCart = () => {
+  const { items, isOpen, closeCart, removeItem, updateQuantity, totalItems, subtotal } = useCart();
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <>
+          {/* Overlay */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={closeCart}
+            className="fixed inset-0 z-50 bg-background/60 backdrop-blur-sm"
+          />
+
+          {/* Cart panel */}
+          <motion.aside
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ type: "tween", duration: 0.35 }}
+            className="fixed right-0 top-0 bottom-0 z-50 w-full max-w-md bg-background border-l border-border flex flex-col"
+          >
+            {/* Header */}
+            <div className="flex items-center justify-between px-6 py-5 border-b border-border">
+              <div className="flex items-center gap-2">
+                <ShoppingBag size={16} className="text-primary" />
+                <h2 className="font-display text-lg">
+                  Sacola{" "}
+                  <span className="font-body text-xs text-muted-foreground">
+                    ({totalItems})
+                  </span>
+                </h2>
+              </div>
+              <button onClick={closeCart} className="text-muted-foreground hover:text-foreground transition-colors">
+                <X size={18} />
+              </button>
+            </div>
+
+            {/* Items */}
+            <div className="flex-1 overflow-y-auto px-6 py-4 space-y-4">
+              {items.length === 0 ? (
+                <div className="flex flex-col items-center justify-center h-full text-center gap-3">
+                  <ShoppingBag size={32} className="text-muted-foreground/40" />
+                  <p className="font-body text-sm text-muted-foreground">
+                    Sua sacola está vazia
+                  </p>
+                </div>
+              ) : (
+                items.map((item) => (
+                  <div
+                    key={`${item.product.id}-${item.size}`}
+                    className="flex gap-4 pb-4 border-b border-border last:border-0"
+                  >
+                    <img
+                      src={item.product.image}
+                      alt={item.product.name}
+                      className="w-20 h-24 object-cover bg-muted"
+                    />
+                    <div className="flex-1 flex flex-col justify-between">
+                      <div>
+                        <h3 className="font-body text-xs tracking-wide text-foreground">
+                          {item.product.name}
+                        </h3>
+                        <p className="font-body text-[10px] text-muted-foreground mt-0.5">
+                          Tam: {item.size}
+                        </p>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2.5">
+                          <button
+                            onClick={() =>
+                              updateQuantity(item.product.id, item.size, item.quantity - 1)
+                            }
+                            className="w-6 h-6 border border-border flex items-center justify-center text-foreground/60 hover:border-primary transition-colors"
+                          >
+                            <Minus size={12} />
+                          </button>
+                          <span className="font-body text-xs w-4 text-center">
+                            {item.quantity}
+                          </span>
+                          <button
+                            onClick={() =>
+                              updateQuantity(item.product.id, item.size, item.quantity + 1)
+                            }
+                            className="w-6 h-6 border border-border flex items-center justify-center text-foreground/60 hover:border-primary transition-colors"
+                          >
+                            <Plus size={12} />
+                          </button>
+                        </div>
+                        <p className="font-display text-sm text-foreground">
+                          {formatPrice(item.product.price * item.quantity)}
+                        </p>
+                      </div>
+                    </div>
+                    <button
+                      onClick={() => removeItem(item.product.id, item.size)}
+                      className="self-start text-muted-foreground/50 hover:text-destructive transition-colors"
+                    >
+                      <X size={14} />
+                    </button>
+                  </div>
+                ))
+              )}
+            </div>
+
+            {/* Footer */}
+            {items.length > 0 && (
+              <div className="px-6 py-5 border-t border-border space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="font-body text-xs tracking-wider uppercase text-muted-foreground">
+                    Subtotal
+                  </span>
+                  <span className="font-display text-lg text-foreground">
+                    {formatPrice(subtotal)}
+                  </span>
+                </div>
+                <button className="w-full bg-primary text-primary-foreground font-body text-[10px] tracking-[0.25em] uppercase py-3.5 hover:bg-primary/90 transition-colors">
+                  Finalizar Compra
+                </button>
+                <button
+                  onClick={closeCart}
+                  className="w-full font-body text-[10px] tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors py-2"
+                >
+                  Continuar Comprando
+                </button>
+              </div>
+            )}
+          </motion.aside>
+        </>
+      )}
+    </AnimatePresence>
+  );
+};
+
+export default SideCart;

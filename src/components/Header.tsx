@@ -1,18 +1,23 @@
 import { useState, useEffect } from "react";
-import { Menu, X, ShoppingBag, Search, Heart } from "lucide-react";
+import { Menu, X, ShoppingBag, Search, Heart, User } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link, useLocation } from "react-router-dom";
 import azamiLogo from "@/assets/azami-logo.png";
+import { useCart } from "@/context/CartContext";
 
 const navLinks = [
-  { label: "Night", href: "#night" },
-  { label: "Beach", href: "#beach" },
-  { label: "Best Sellers", href: "#bestsellers" },
-  { label: "Sobre", href: "#sobre" },
+  { label: "Todos", href: "/produtos" },
+  { label: "Night Out", href: "/produtos?cat=night" },
+  { label: "Beach Chic", href: "/produtos?cat=beach" },
+  { label: "Best Sellers", href: "/produtos?cat=bestseller" },
 ];
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { openCart, totalItems } = useCart();
+  const location = useLocation();
+  const isHome = location.pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60);
@@ -20,15 +25,20 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location]);
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
+        scrolled || !isHome
           ? "bg-[hsl(0_0%_4%)/95] backdrop-blur-md border-b border-[hsl(0_0%_15%)]"
           : "bg-transparent"
       }`}
     >
-      {/* Announcement bar — hidden on scroll */}
+      {/* Announcement bar */}
       <div
         className={`text-center transition-all duration-500 overflow-hidden ${
           scrolled ? "max-h-0 py-0" : "max-h-10 py-1.5"
@@ -53,37 +63,54 @@ const Header = () => {
           {/* Nav links — desktop */}
           <nav className="hidden md:flex items-center gap-10">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.label}
-                href={link.href}
+                to={link.href}
                 className="font-body text-[10px] tracking-[0.25em] uppercase text-[hsl(30_15%_70%)] hover:text-primary transition-colors duration-300"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
           {/* Logo — centered */}
-          <a href="/" className="absolute left-1/2 -translate-x-1/2">
+          <Link to="/" className="absolute left-1/2 -translate-x-1/2">
             <img
               src={azamiLogo}
               alt="AZAMI MODAS"
               className="h-7 md:h-12 w-auto object-contain"
             />
-          </a>
+          </Link>
 
           {/* Right icons */}
           <div className="flex items-center gap-4">
-            <button className="text-[hsl(30_15%_70%)] hover:text-primary transition-colors" aria-label="Buscar">
+            <button
+              className="text-[hsl(30_15%_70%)] hover:text-primary transition-colors"
+              aria-label="Buscar"
+            >
               <Search size={16} />
             </button>
-            <button className="hidden md:block text-[hsl(30_15%_70%)] hover:text-primary transition-colors" aria-label="Favoritos">
+            <Link
+              to="/conta"
+              className="hidden md:block text-[hsl(30_15%_70%)] hover:text-primary transition-colors"
+              aria-label="Minha Conta"
+            >
+              <User size={16} />
+            </Link>
+            <button
+              className="hidden md:block text-[hsl(30_15%_70%)] hover:text-primary transition-colors"
+              aria-label="Favoritos"
+            >
               <Heart size={16} />
             </button>
-            <button className="text-[hsl(30_15%_70%)] hover:text-primary transition-colors relative" aria-label="Sacola">
+            <button
+              onClick={openCart}
+              className="text-[hsl(30_15%_70%)] hover:text-primary transition-colors relative"
+              aria-label="Sacola"
+            >
               <ShoppingBag size={16} />
               <span className="absolute -top-1.5 -right-2 bg-primary text-primary-foreground text-[8px] font-body font-semibold w-3.5 h-3.5 rounded-full flex items-center justify-center">
-                0
+                {totalItems}
               </span>
             </button>
           </div>
@@ -101,15 +128,21 @@ const Header = () => {
           >
             <div className="container mx-auto px-4 py-6 flex flex-col gap-5">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.label}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
+                  to={link.href}
                   className="font-body text-xs tracking-[0.25em] uppercase text-[hsl(30_15%_70%)] hover:text-primary transition-colors"
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
+              <Link
+                to="/conta"
+                className="font-body text-xs tracking-[0.25em] uppercase text-[hsl(30_15%_70%)] hover:text-primary transition-colors flex items-center gap-2"
+              >
+                <User size={14} />
+                Minha Conta
+              </Link>
             </div>
           </motion.nav>
         )}
