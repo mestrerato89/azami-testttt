@@ -4,95 +4,46 @@ import model01 from "@/assets/model-01.jpg";
 const ShapeSection = () => {
   return (
     <section className="relative bg-[hsl(0_0%_3%)] text-[hsl(30_15%_92%)] overflow-hidden">
-      <div className="grid grid-cols-1 md:grid-cols-2 min-h-[80vh]">
-        {/* Image side — full bleed */}
-        <motion.div
-          initial={{ opacity: 0, scale: 1.05 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1 }}
-          className="relative aspect-[3/4] md:aspect-auto overflow-hidden"
-        >
-          <img
-            src={model01}
-            alt="O Shape que esculpe — caimento perfeito"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[hsl(0_0%_3%)] hidden md:block" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[hsl(0_0%_3%)] to-transparent md:hidden" />
+      <div className="flex flex-col md:grid md:grid-cols-2 min-h-[auto] md:min-h-[80vh]">
+        {/* Image */}
+        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }}
+          className="relative aspect-[4/5] md:aspect-auto overflow-hidden">
+          <img src={model01} alt="O Shape que esculpe" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[hsl(0_0%_3%)] md:bg-gradient-to-r md:from-transparent md:to-[hsl(0_0%_3%)]" />
         </motion.div>
 
-        {/* Text side */}
-        <div className="flex items-center px-8 md:px-16 lg:px-24 py-16 md:py-0">
+        {/* Text */}
+        <div className="flex items-center px-5 md:px-16 lg:px-24 py-10 md:py-0 -mt-8 md:mt-0 relative z-10">
           <div className="max-w-md">
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="font-body text-[10px] tracking-[0.5em] uppercase text-primary mb-5"
-            >
+            <motion.p initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
+              className="font-body text-[9px] md:text-[10px] tracking-[0.4em] uppercase text-primary mb-4">
               O Diferencial
             </motion.p>
-
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="font-display text-4xl md:text-5xl lg:text-6xl font-light leading-[1.05] mb-8"
-            >
-              O Shape
-              <br />
-              que{" "}
-              <span className="italic text-gold-gradient">Esculpe</span>
+            <motion.h2 initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.1 }}
+              className="font-display text-3xl md:text-5xl lg:text-6xl font-light leading-[1.05] mb-6">
+              O Shape<br />que <span className="italic text-gold-gradient">Esculpe</span>
             </motion.h2>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="font-body text-xs md:text-sm text-[hsl(30_8%_55%)] leading-relaxed mb-6"
-            >
-              Cada peça é projetada para acompanhar e valorizar as curvas do corpo feminino. 
-              Modelagem ergonômica, tecidos com elasticidade controlada e recortes que criam 
-              linhas de silhueta impecáveis.
+            <motion.p initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.3 }}
+              className="font-body text-[11px] md:text-sm text-[hsl(30_8%_55%)] leading-relaxed mb-5">
+              Cada peça é projetada para acompanhar e valorizar as curvas do corpo feminino.
+              Modelagem ergonômica e recortes que criam linhas de silhueta impecáveis.
             </motion.p>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="font-body text-xs md:text-sm text-[hsl(30_8%_55%)] leading-relaxed mb-10"
-            >
+            <motion.p initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.4 }}
+              className="font-body text-[11px] md:text-sm text-[hsl(30_8%_55%)] leading-relaxed mb-8">
               O caimento perfeito não é acidente — é engenharia de moda com alma brasileira.
             </motion.p>
 
-            {/* Decorative stitch line */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="mb-10"
-            >
-              <svg width="120" height="2" viewBox="0 0 120 2" className="text-primary/30">
-                {[0, 12, 24, 36, 48, 60, 72, 84, 96, 108].map((x) => (
-                  <rect key={x} x={x} y="0" width="8" height="1" fill="currentColor" />
+            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.5 }} className="mb-8">
+              <svg width="80" height="2" viewBox="0 0 80 2" className="text-primary/30">
+                {[0, 10, 20, 30, 40, 50, 60, 70].map((x) => (
+                  <rect key={x} x={x} y="0" width="6" height="1" fill="currentColor" />
                 ))}
               </svg>
             </motion.div>
 
-            <motion.a
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.6 }}
+            <motion.a initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.6 }}
               href="#"
-              className="inline-block font-body text-[10px] md:text-[11px] tracking-[0.25em] uppercase bg-primary text-primary-foreground px-10 py-4 hover:bg-primary/90 transition-all duration-300 hover:shadow-gold"
-            >
+              className="inline-block font-body text-[10px] tracking-[0.2em] uppercase bg-primary text-primary-foreground px-7 py-3.5 hover:bg-primary/90 transition-all duration-300">
               Explorar Peças Shape
             </motion.a>
           </div>

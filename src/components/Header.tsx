@@ -28,26 +28,26 @@ const Header = () => {
           : "bg-transparent"
       }`}
     >
-      {/* Announcement bar */}
+      {/* Announcement bar — hidden on scroll */}
       <div
-        className={`text-center py-2 transition-all duration-500 ${
-          scrolled ? "h-0 py-0 overflow-hidden opacity-0" : "bg-primary/10"
-        }`}
+        className={`text-center transition-all duration-500 overflow-hidden ${
+          scrolled ? "max-h-0 py-0" : "max-h-10 py-1.5"
+        } bg-primary/10`}
       >
-        <p className="text-[10px] font-body tracking-[0.25em] uppercase text-primary">
-          Frete grátis para compras acima de R$299
+        <p className="text-[9px] md:text-[10px] font-body tracking-[0.2em] uppercase text-primary whitespace-nowrap">
+          Frete grátis acima de R$299
         </p>
       </div>
 
-      <div className="container mx-auto px-6 md:px-12">
-        <div className="flex items-center justify-between h-16 md:h-20">
+      <div className="container mx-auto px-4 md:px-12">
+        <div className="flex items-center justify-between h-14 md:h-20">
           {/* Mobile menu toggle */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-foreground"
+            className="md:hidden text-foreground p-1"
             aria-label="Menu"
           >
-            {isOpen ? <X size={22} /> : <Menu size={22} />}
+            {isOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
 
           {/* Nav links — desktop */}
@@ -68,21 +68,21 @@ const Header = () => {
             <img
               src={azamiLogo}
               alt="AZAMI MODAS"
-              className="h-9 md:h-12 w-auto object-contain"
+              className="h-7 md:h-12 w-auto object-contain"
             />
           </a>
 
           {/* Right icons */}
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-4">
             <button className="text-[hsl(30_15%_70%)] hover:text-primary transition-colors" aria-label="Buscar">
-              <Search size={17} />
+              <Search size={16} />
             </button>
             <button className="hidden md:block text-[hsl(30_15%_70%)] hover:text-primary transition-colors" aria-label="Favoritos">
-              <Heart size={17} />
+              <Heart size={16} />
             </button>
             <button className="text-[hsl(30_15%_70%)] hover:text-primary transition-colors relative" aria-label="Sacola">
-              <ShoppingBag size={17} />
-              <span className="absolute -top-1.5 -right-2 bg-primary text-primary-foreground text-[8px] font-body font-semibold w-4 h-4 rounded-full flex items-center justify-center">
+              <ShoppingBag size={16} />
+              <span className="absolute -top-1.5 -right-2 bg-primary text-primary-foreground text-[8px] font-body font-semibold w-3.5 h-3.5 rounded-full flex items-center justify-center">
                 0
               </span>
             </button>
@@ -99,7 +99,7 @@ const Header = () => {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden bg-[hsl(0_0%_4%)] border-b border-[hsl(0_0%_12%)] overflow-hidden"
           >
-            <div className="container mx-auto px-6 py-8 flex flex-col gap-6">
+            <div className="container mx-auto px-4 py-6 flex flex-col gap-5">
               {navLinks.map((link) => (
                 <a
                   key={link.label}
