@@ -14,30 +14,25 @@ const nightProducts = [
 
 const NightCollection = () => {
   return (
-    <section id="night" className="relative bg-[hsl(0_0%_4%)] text-[hsl(30_15%_92%)] py-24 md:py-36 overflow-hidden">
-      {/* Ambient texture — subtle radial glow */}
-      <div className="absolute inset-0 opacity-[0.03]">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-gradient-radial from-primary/40 to-transparent" />
-      </div>
-
-      <div className="container mx-auto px-6 md:px-12 relative z-10">
-        {/* Section header */}
-        <div className="text-center mb-16 md:mb-20">
+    <section id="night" className="relative bg-[hsl(0_0%_4%)] text-[hsl(30_15%_92%)] py-16 md:py-36 overflow-hidden">
+      <div className="container mx-auto px-5 md:px-12 relative z-10">
+        {/* Header */}
+        <div className="text-center mb-10 md:mb-20">
           <motion.p
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="font-body text-[10px] tracking-[0.5em] uppercase text-primary mb-4"
+            className="font-body text-[9px] md:text-[10px] tracking-[0.4em] uppercase text-primary mb-3"
           >
             Coleção Noite
           </motion.p>
           <motion.h2
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="font-display text-4xl md:text-6xl font-light leading-tight"
+            className="font-display text-3xl md:text-6xl font-light leading-tight"
           >
             Night <span className="italic text-gold-gradient">Glow</span>
           </motion.h2>
@@ -46,83 +41,69 @@ const NightCollection = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="font-body text-xs text-[hsl(30_8%_55%)] mt-5 max-w-md mx-auto leading-relaxed"
+            className="font-body text-[11px] md:text-xs text-[hsl(30_8%_55%)] mt-4 max-w-sm mx-auto leading-relaxed"
           >
-            Peças que brilham sob as luzes da noite. Corsets estruturados, recortes estratégicos e texturas que capturam cada olhar.
+            Corsets estruturados, recortes estratégicos e texturas que capturam cada olhar.
           </motion.p>
         </div>
 
-        {/* Asymmetric grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 auto-rows-[260px] sm:auto-rows-[320px] md:auto-rows-[380px]">
-          {nightProducts.map((product, i) => {
-            // Asymmetric spans for visual movement
-            const spanClasses = [
-              "md:col-span-2 md:row-span-2",
-              "md:col-span-2 md:row-span-1",
-              "md:col-span-2 md:row-span-1",
-              "md:col-span-2 md:row-span-1",
-            ];
-            return (
-              <motion.div
-                key={product.name}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.6, delay: i * 0.12 }}
-                className={`group relative cursor-pointer overflow-hidden ${spanClasses[i]}`}
-              >
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
+        {/* Grid — 2 cols on mobile, asymmetric on desktop */}
+        <div className="grid grid-cols-2 gap-2.5 md:gap-4">
+          {/* Large featured item */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.6 }}
+            className="col-span-2 md:col-span-1 md:row-span-2 group relative cursor-pointer overflow-hidden"
+          >
+            <div className="aspect-[3/4] md:aspect-auto md:h-full">
+              <img src={nightProducts[0].image} alt={nightProducts[0].name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-[hsl(0_0%_4%)/70] via-transparent to-transparent" />
+            <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <button className="w-8 h-8 bg-[hsl(0_0%_4%)/60] backdrop-blur-sm flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors" aria-label="Favoritar"><Heart size={13} /></button>
+            </div>
+            <div className="absolute inset-x-0 bottom-0 translate-y-full group-hover:translate-y-0 transition-transform duration-400 z-20">
+              <button className="w-full bg-primary text-primary-foreground font-body text-[9px] md:text-[10px] tracking-[0.2em] uppercase py-3 hover:bg-primary/90 transition-colors">Garantir meu Look</button>
+            </div>
+            <div className="absolute inset-x-0 bottom-0 p-4 md:p-6 z-10">
+              <h3 className="font-body text-xs md:text-sm text-[hsl(30_15%_92%)] font-light mb-0.5">{nightProducts[0].name}</h3>
+              <p className="font-body text-[10px] md:text-[11px] text-primary font-medium">{nightProducts[0].price}</p>
+            </div>
+          </motion.div>
 
-                {/* Overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[hsl(0_0%_4%)/80] via-transparent to-transparent" />
-
-                {/* Quick action */}
-                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <button className="w-9 h-9 bg-[hsl(0_0%_4%)/70] backdrop-blur-sm flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors" aria-label="Favoritar">
-                    <Heart size={15} />
-                  </button>
-                </div>
-
-                {/* Hover buy bar */}
-                <div className="absolute inset-x-0 bottom-0 translate-y-full group-hover:translate-y-0 transition-transform duration-400 z-20">
-                  <button className="w-full bg-primary text-primary-foreground font-body text-[10px] tracking-[0.2em] uppercase py-3.5 hover:bg-primary/90 transition-colors">
-                    Garantir meu Look
-                  </button>
-                </div>
-
-                {/* Text */}
-                <div className="absolute inset-x-0 bottom-0 p-5 md:p-6 z-10">
-                  <h3 className="font-body text-xs md:text-sm text-[hsl(30_15%_92%)] font-light mb-1">
-                    {product.name}
-                  </h3>
-                  <p className="font-body text-[11px] text-primary font-medium">
-                    {product.price}
-                  </p>
-                </div>
-
-                {/* Border hover */}
-                <div className="absolute inset-0 border border-transparent group-hover:border-primary/20 transition-colors duration-500 z-10" />
-              </motion.div>
-            );
-          })}
+          {/* Smaller items */}
+          {nightProducts.slice(1).map((product, i) => (
+            <motion.div
+              key={product.name}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.5, delay: (i + 1) * 0.1 }}
+              className="group relative cursor-pointer overflow-hidden"
+            >
+              <div className="aspect-[3/4]">
+                <img src={product.image} alt={product.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-[hsl(0_0%_4%)/70] via-transparent to-transparent" />
+              <div className="absolute top-2.5 right-2.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <button className="w-7 h-7 bg-[hsl(0_0%_4%)/60] backdrop-blur-sm flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors" aria-label="Favoritar"><Heart size={12} /></button>
+              </div>
+              <div className="absolute inset-x-0 bottom-0 translate-y-full group-hover:translate-y-0 transition-transform duration-400 z-20">
+                <button className="w-full bg-primary text-primary-foreground font-body text-[9px] tracking-[0.15em] uppercase py-2.5 hover:bg-primary/90 transition-colors">Garantir meu Look</button>
+              </div>
+              <div className="absolute inset-x-0 bottom-0 p-3 md:p-5 z-10">
+                <h3 className="font-body text-[11px] md:text-sm text-[hsl(30_15%_92%)] font-light mb-0.5">{product.name}</h3>
+                <p className="font-body text-[10px] text-primary font-medium">{product.price}</p>
+              </div>
+            </motion.div>
+          ))}
         </div>
 
         {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-center mt-14"
-        >
-          <a
-            href="#"
-            className="font-body text-[10px] tracking-[0.25em] uppercase text-primary border-b border-primary/30 hover:border-primary pb-1 transition-colors duration-300"
-          >
+        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.3 }} className="text-center mt-10 md:mt-14">
+          <a href="#" className="font-body text-[10px] tracking-[0.2em] uppercase text-primary border-b border-primary/30 hover:border-primary pb-1 transition-colors duration-300">
             Ver toda a coleção Noite
           </a>
         </motion.div>
