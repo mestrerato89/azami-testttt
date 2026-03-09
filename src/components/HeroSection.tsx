@@ -1,103 +1,82 @@
 import { motion } from "framer-motion";
 import model01 from "@/assets/model-01.jpg";
-import model08 from "@/assets/model-08.jpg";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-end overflow-hidden bg-background">
-      {/* Background image with slow zoom */}
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
+      {/* Background image */}
       <div className="absolute inset-0">
         <img
           src={model01}
-          alt="AZAMI MODAS - Coleção"
+          alt="AZAMI MODAS — A expressão máxima da sua autoconfiança"
           className="w-full h-full object-cover object-top animate-slow-zoom"
         />
-        {/* Gradient overlay — bottom fade for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
-        {/* Subtle gold tint overlay */}
-        <div className="absolute inset-0 bg-primary/5" />
+        {/* Deep gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/50 to-transparent" />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 pb-20 md:pb-28">
-        <div className="max-w-2xl">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="font-body text-[10px] tracking-[0.4em] uppercase text-primary mb-4"
-          >
-            Nova Coleção 2026
-          </motion.p>
+      {/* Content — centered */}
+      <div className="relative z-10 container mx-auto px-6 md:px-12 flex flex-col items-center text-center pt-20">
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+          className="font-body text-[10px] md:text-[11px] tracking-[0.5em] uppercase text-primary mb-6"
+        >
+          Nova Coleção 2026
+        </motion.p>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="font-display text-5xl md:text-7xl lg:text-8xl font-light text-foreground leading-[0.9] mb-6"
-          >
-            Glow Up
-            <br />
-            <span className="text-gold-gradient italic">Collection</span>
-          </motion.h1>
+        <motion.h1
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.5 }}
+          className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light text-foreground leading-[1] mb-8 max-w-4xl"
+        >
+          A Expressão Máxima
+          <br />
+          da sua{" "}
+          <span className="italic text-gold-gradient">Autoconfiança</span>
+        </motion.h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
-            className="font-body text-sm text-muted-foreground max-w-md mb-8 leading-relaxed"
-          >
-            Peças autorais que celebram a sua silhueta. Crochê artesanal, recortes 
-            estratégicos e brilho na medida certa para quem nasceu para brilhar.
-          </motion.p>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.8 }}
+          className="font-body text-xs md:text-sm text-muted-foreground max-w-lg mb-10 leading-relaxed"
+        >
+          Peças autorais que celebram a sua silhueta. Crochê artesanal, recortes
+          estratégicos e brilho na medida certa.
+        </motion.p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.9 }}
-            className="flex items-center gap-4"
-          >
-            <a
-              href="#colecoes"
-              className="font-body text-[11px] tracking-[0.2em] uppercase bg-primary text-primary-foreground px-8 py-3.5 hover:bg-primary/90 transition-colors duration-300"
-            >
-              Explorar Coleção
-            </a>
-            <a
-              href="#novidades"
-              className="font-body text-[11px] tracking-[0.2em] uppercase border border-foreground/20 text-foreground px-8 py-3.5 hover:border-primary hover:text-primary transition-colors duration-300"
-            >
-              Novidades
-            </a>
-          </motion.div>
-        </div>
-
-        {/* Decorative element: thin gold line */}
         <motion.div
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 1.2, delay: 1.2 }}
-          className="absolute bottom-8 left-6 right-6 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent origin-left"
-        />
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.0 }}
+          className="flex flex-col sm:flex-row items-center gap-4"
+        >
+          <a
+            href="#night"
+            className="font-body text-[10px] md:text-[11px] tracking-[0.25em] uppercase bg-primary text-primary-foreground px-10 py-4 hover:bg-primary/90 transition-all duration-300 hover:shadow-gold"
+          >
+            Garantir meu Look
+          </a>
+          <a
+            href="#beach"
+            className="font-body text-[10px] md:text-[11px] tracking-[0.25em] uppercase border border-foreground/20 text-foreground px-10 py-4 hover:border-primary hover:text-primary transition-all duration-300"
+          >
+            Ver Disponibilidade
+          </a>
+        </motion.div>
       </div>
 
-      {/* Side floating thumbnail — desktop only */}
+      {/* Bottom gold accent line */}
       <motion.div
-        initial={{ opacity: 0, x: 40 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, delay: 1.0 }}
-        className="hidden lg:block absolute right-12 bottom-28 w-40 aspect-[3/4]"
-      >
-        <img
-          src={model08}
-          alt="Preview da coleção"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 border border-primary/20" />
-        <p className="font-body text-[9px] tracking-[0.3em] uppercase text-primary/60 mt-2 text-center">
-          Ver lookbook
-        </p>
-      </motion.div>
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: 1 }}
+        transition={{ duration: 1.4, delay: 1.4 }}
+        className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent origin-center"
+      />
     </section>
   );
 };

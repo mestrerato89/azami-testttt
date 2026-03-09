@@ -1,7 +1,8 @@
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
-import FeaturedProducts from "@/components/FeaturedProducts";
-import CollectionGrid from "@/components/CollectionGrid";
+import NightCollection from "@/components/NightCollection";
+import BeachCollection from "@/components/BeachCollection";
+import ShapeSection from "@/components/ShapeSection";
 import BestSellers from "@/components/BestSellers";
 import BrandStory from "@/components/BrandStory";
 import InstagramFeed from "@/components/InstagramFeed";
@@ -13,8 +14,9 @@ const Index = () => {
       <Header />
       <main>
         <HeroSection />
-        <FeaturedProducts />
-        <CollectionGrid />
+        <NightCollection />
+        <BeachCollection />
+        <ShapeSection />
         <BestSellers />
         <BrandStory />
         <InstagramFeed />
