@@ -18,13 +18,13 @@ const SideCart = () => {
       )
       .join("\n");
 
-    let message = `Olá! Gostaria de finalizar o meu pedido na AZAMI MODAS:\n\n*PRODUTOS SELECIONADOS:*\n\n${productLines}\n\n*SUBTOTAL:* ${formatPrice(subtotal)}`;
+    let message = `✨ Olá! Gostaria de finalizar o meu pedido na *AZAMI MODAS* 🛍️\n\n📦 *PRODUTOS SELECIONADOS:*\n\n${productLines}\n\n💰 *SUBTOTAL:* ${formatPrice(subtotal)}`;
 
     if (notes.trim()) {
-      message += `\n\n*OBSERVAÇÕES:* ${notes.trim()}`;
+      message += `\n\n📝 *OBSERVAÇÕES:* ${notes.trim()}`;
     }
 
-    message += `\n\nAguardo o retorno para combinar o envio!`;
+    message += `\n\n📩 Aguardo o retorno para combinar o envio! 💛`;
 
     const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
     closeCart();
