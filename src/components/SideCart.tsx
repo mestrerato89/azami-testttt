@@ -168,8 +168,7 @@ const SideCart = () => {
                 </div>
                 <button
                   onClick={handleCheckout}
-                  className="w-full font-body text-[10px] tracking-[0.25em] uppercase py-3.5 transition-colors"
-                  style={{ backgroundColor: "#E3C79F", color: "#000" }}
+                  className="w-full font-body text-[10px] tracking-[0.25em] uppercase py-3.5 bg-primary text-primary-foreground hover:opacity-90 transition-all font-medium mono-shine"
                 >
                   Finalizar Compra
                 </button>

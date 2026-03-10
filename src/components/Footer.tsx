@@ -10,7 +10,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-[hsl(0_0%_4%)] text-[hsl(30_15%_70%)] border-t border-[hsl(0_0%_10%)] pb-20 md:pb-0">
+    <footer className="bg-[hsl(0_0%_4%)] text-[hsl(0_0%_70%)] border-t border-[hsl(0_0%_10%)] pb-20 md:pb-0">
       <div className="container mx-auto px-6 md:px-12 pt-16 md:pt-20 pb-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
           {/* Brand */}
@@ -38,11 +38,11 @@ const Footer = () => {
 
           {/* Links 1 */}
           <div className="md:col-span-2">
-            <h4 className="font-body text-[10px] tracking-[0.3em] uppercase text-[hsl(30_15%_92%)] mb-6">Explorar</h4>
+            <h4 className="font-body text-[10px] tracking-[0.3em] uppercase text-[hsl(0_0%_92%)] mb-6">Explorar</h4>
             <ul className="space-y-4">
               {["Night Collection", "Beach Collection", "Best Sellers", "Promoções"].map((l) => (
                 <li key={l}>
-                  <a href="#" className="font-body text-xs hover:text-[hsl(30_15%_92%)] transition-colors">{l}</a>
+                  <a href="#" className="font-body text-xs hover:text-[hsl(0_0%_92%)] transition-colors">{l}</a>
                 </li>
               ))}
             </ul>
@@ -50,11 +50,11 @@ const Footer = () => {
 
           {/* Links 2 */}
           <div className="md:col-span-2">
-            <h4 className="font-body text-[10px] tracking-[0.3em] uppercase text-[hsl(30_15%_92%)] mb-6">Ajuda</h4>
+            <h4 className="font-body text-[10px] tracking-[0.3em] uppercase text-[hsl(0_0%_92%)] mb-6">Ajuda</h4>
             <ul className="space-y-4">
               {["Minha Conta", "Rastreio e Frete", "Devoluções", "Guia de Medidas", "Fale Conosco"].map((l) => (
                 <li key={l}>
-                  <a href="#" className="font-body text-xs hover:text-[hsl(30_15%_92%)] transition-colors">{l}</a>
+                  <a href="#" className="font-body text-xs hover:text-[hsl(0_0%_92%)] transition-colors">{l}</a>
                 </li>
               ))}
             </ul>
@@ -62,7 +62,7 @@ const Footer = () => {
 
           {/* Newsletter / Contact */}
           <div className="md:col-span-4">
-            <h4 className="font-body text-[10px] tracking-[0.3em] uppercase text-[hsl(30_15%_92%)] mb-6">Newsletter VIP</h4>
+            <h4 className="font-body text-[10px] tracking-[0.3em] uppercase text-[hsl(0_0%_92%)] mb-6">Newsletter VIP</h4>
             <p className="font-body text-xs mb-5 leading-relaxed">
               Assine para receber acesso antecipado a novas coleções e ofertas exclusivas para clientes VIP.
             </p>
@@ -71,7 +71,7 @@ const Footer = () => {
                 type="email"
                 required
                 placeholder="Seu e-mail"
-                className="flex-1 bg-[hsl(0_0%_6%)] border border-[hsl(0_0%_18%)] px-4 py-3 font-body text-xs text-[hsl(30_15%_92%)] placeholder:text-[hsl(30_8%_40%)] focus:outline-none focus:border-primary transition-colors"
+                className="flex-1 bg-[hsl(0_0%_6%)] border border-[hsl(0_0%_18%)] px-4 py-3 font-body text-xs text-[hsl(0_0%_92%)] placeholder:text-[hsl(0_0%_40%)] focus:outline-none focus:border-primary transition-colors"
               />
               <button type="submit" className="bg-primary text-primary-foreground font-body text-[10px] tracking-[0.15em] uppercase px-6 py-3 hover:bg-primary/90 transition-colors">
                 Assinar

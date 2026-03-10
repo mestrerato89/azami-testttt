@@ -18,7 +18,7 @@ const WhatsAppFloating = () => {
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
       onClick={handleClick}
-      className="fixed bottom-6 right-6 z-[60] bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-shadow flex items-center justify-center"
+      className="fixed bottom-6 right-6 z-[60] bg-black text-white p-4 rounded-full shadow-mono hover:bg-neutral-800 transition-colors flex items-center justify-center mono-shine"
       aria-label="Falar no WhatsApp"
     >
       <MessageCircle size={28} fill="currentColor" />

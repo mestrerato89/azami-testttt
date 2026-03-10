@@ -24,7 +24,7 @@ const HeroSection = () => {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="font-body text-[9px] md:text-[11px] tracking-[0.4em] uppercase text-[hsl(38_55%_55%)] mb-4"
+                className="font-body text-[9px] md:text-[11px] tracking-[0.4em] uppercase text-white/60 mb-4"
               >
                 Nova Coleção 2026
               </motion.p>
@@ -38,7 +38,7 @@ const HeroSection = () => {
                 A Expressão Máxima
                 <br />
                 da sua{" "}
-                <span className="italic text-[hsl(38_55%_75%)]">Autoconfiança</span>
+                <span className="italic text-white">Autoconfiança</span>
               </motion.h1>
 
               <motion.p
@@ -59,7 +59,7 @@ const HeroSection = () => {
               >
                 <a
                   href="/produtos"
-                  className="font-body text-[10px] tracking-[0.3em] uppercase bg-[hsl(38_55%_75%)] text-[hsl(0_0%_4%)] px-9 py-4 text-center hover:bg-[hsl(38_55%_68%)] transition-all duration-400 hover:shadow-gold"
+                  className="font-body text-[10px] tracking-[0.3em] uppercase bg-white text-black px-9 py-4 text-center hover:bg-white/90 transition-all duration-400 mono-shine"
                 >
                   Conferir Colecção
                 </a>
@@ -80,7 +80,7 @@ const HeroSection = () => {
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
         transition={{ duration: 1.2, delay: 1.4 }}
-        className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent origin-center"
+        className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent origin-center"
       />
     </section>
   );

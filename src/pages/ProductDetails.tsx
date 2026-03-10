@@ -129,8 +129,8 @@ const ProductDetails = () => {
                   {product.colors.map(color => {
                     let bgColor = "bg-black";
                     if (color === "Branco") bgColor = "bg-white border border-gray-200";
-                    if (color === "Champagne") bgColor = "bg-[#D8C3A5]";
-                    if (color === "Estampado") bgColor = "bg-gradient-to-tr from-orange-300 via-pink-400 to-red-400";
+                    if (color === "Champagne") bgColor = "bg-[#E5E7EB]"; // Silver/Zinc tone
+                    if (color === "Estampado") bgColor = "bg-zinc-400"; // Monochrome pattern representation
                     
                     return (
                       <button
@@ -196,7 +196,7 @@ const ProductDetails = () => {
                       }
                       openCart();
                     }}
-                    className="flex-1 h-14 font-body text-[10px] tracking-[0.2em] uppercase bg-primary text-primary-foreground hover:bg-primary/90 transition-all flex items-center justify-center gap-2 shadow-lg shadow-primary/20"
+                    className="flex-1 h-14 font-body text-[10px] tracking-[0.2em] uppercase bg-primary text-primary-foreground hover:bg-primary/90 transition-all flex items-center justify-center gap-2 mono-shine"
                   >
                     Comprar Agora
                   </button>

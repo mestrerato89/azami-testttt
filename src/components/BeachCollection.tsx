@@ -14,11 +14,11 @@ const beachProducts = [
 
 const BeachCollection = () => {
   return (
-    <section id="beach" className="relative py-16 md:py-36 overflow-hidden" style={{ background: "hsl(33 25% 93%)" }}>
+    <section id="beach" className="relative py-16 md:py-36 overflow-hidden bg-white">
       {/* Subtle wave texture */}
       <div className="absolute inset-0 opacity-[0.04] pointer-events-none">
         <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 1440 600">
-          <path d="M0 300 Q360 200 720 300 T1440 300 V600 H0Z" fill="hsl(38 55% 55%)" />
+          <path d="M0 300 Q360 200 720 300 T1440 300 V600 H0Z" fill="hsl(0 0% 90%)" />
         </svg>
       </div>
 
@@ -31,7 +31,7 @@ const BeachCollection = () => {
           </motion.p>
           <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.1 }}
             className="font-display text-3xl md:text-6xl font-light text-foreground leading-tight">
-            Beach <span className="italic text-gold-gradient">Luxe</span>
+            Beach <span className="italic text-mono-gradient">Luxe</span>
           </motion.h2>
           <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.3 }}
             className="font-body text-[11px] md:text-xs text-muted-foreground mt-4 max-w-sm mx-auto leading-relaxed">
@@ -44,7 +44,7 @@ const BeachCollection = () => {
           {beachProducts.map((product, i) => (
             <motion.div key={product.name} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-40px" }} transition={{ duration: 0.5, delay: i * 0.1 }}
               className="group cursor-pointer">
-              <div className="relative aspect-[3/4] overflow-hidden mb-3 bg-[hsl(33_20%_88%)]">
+              <div className="relative aspect-[3/4] overflow-hidden mb-3 bg-muted">
                 <img src={product.image} alt={product.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 <div className="absolute top-2.5 right-2.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <button className="w-7 h-7 md:w-8 md:h-8 bg-background/80 backdrop-blur-sm flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors" aria-label="Favoritar"><Heart size={12} /></button>
