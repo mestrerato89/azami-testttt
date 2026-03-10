@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useCart } from "@/context/CartContext";
 import { formatPrice } from "@/data/products";
 
-const WHATSAPP_NUMBER = "5521976425045";
+const WHATSAPP_NUMBER = "5511959656325";
 
 const SideCart = () => {
   const { items, isOpen, closeCart, removeItem, updateQuantity, totalItems, subtotal } = useCart();
