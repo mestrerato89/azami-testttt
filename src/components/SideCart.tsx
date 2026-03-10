@@ -1,16 +1,40 @@
+import { useState } from "react";
 import { X, Minus, Plus, ShoppingBag } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCart } from "@/context/CartContext";
 import { formatPrice } from "@/data/products";
 
+const WHATSAPP_NUMBER = "5521976425045";
+
 const SideCart = () => {
   const { items, isOpen, closeCart, removeItem, updateQuantity, totalItems, subtotal } = useCart();
+  const [notes, setNotes] = useState("");
+
+  const handleCheckout = () => {
+    const productLines = items
+      .map(
+        (item) =>
+          `${item.quantity}x ${item.product.name} - Tam ${item.size} - ${formatPrice(item.product.price)}`
+      )
+      .join("\n");
+
+    let message = `Olá! Gostaria de finalizar o meu pedido na AZAMI MODAS:\n\n*PRODUTOS SELECIONADOS:*\n\n${productLines}\n\n*SUBTOTAL:* ${formatPrice(subtotal)}`;
+
+    if (notes.trim()) {
+      message += `\n\n*OBSERVAÇÕES:* ${notes.trim()}`;
+    }
+
+    message += `\n\nAguardo o retorno para combinar o envio!`;
+
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    closeCart();
+    window.open(url, "_blank");
+  };
 
   return (
     <AnimatePresence>
       {isOpen && (
         <>
-          {/* Overlay */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -19,7 +43,6 @@ const SideCart = () => {
             className="fixed inset-0 z-50 bg-background/60 backdrop-blur-sm"
           />
 
-          {/* Cart panel */}
           <motion.aside
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
@@ -53,60 +76,76 @@ const SideCart = () => {
                   </p>
                 </div>
               ) : (
-                items.map((item) => (
-                  <div
-                    key={`${item.product.id}-${item.size}`}
-                    className="flex gap-4 pb-4 border-b border-border last:border-0"
-                  >
-                    <img
-                      src={item.product.image}
-                      alt={item.product.name}
-                      className="w-20 h-24 object-cover bg-muted"
-                    />
-                    <div className="flex-1 flex flex-col justify-between">
-                      <div>
-                        <h3 className="font-body text-xs tracking-wide text-foreground">
-                          {item.product.name}
-                        </h3>
-                        <p className="font-body text-[10px] text-muted-foreground mt-0.5">
-                          Tam: {item.size}
-                        </p>
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2.5">
-                          <button
-                            onClick={() =>
-                              updateQuantity(item.product.id, item.size, item.quantity - 1)
-                            }
-                            className="w-6 h-6 border border-border flex items-center justify-center text-foreground/60 hover:border-primary transition-colors"
-                          >
-                            <Minus size={12} />
-                          </button>
-                          <span className="font-body text-xs w-4 text-center">
-                            {item.quantity}
-                          </span>
-                          <button
-                            onClick={() =>
-                              updateQuantity(item.product.id, item.size, item.quantity + 1)
-                            }
-                            className="w-6 h-6 border border-border flex items-center justify-center text-foreground/60 hover:border-primary transition-colors"
-                          >
-                            <Plus size={12} />
-                          </button>
-                        </div>
-                        <p className="font-display text-sm text-foreground">
-                          {formatPrice(item.product.price * item.quantity)}
-                        </p>
-                      </div>
-                    </div>
-                    <button
-                      onClick={() => removeItem(item.product.id, item.size)}
-                      className="self-start text-muted-foreground/50 hover:text-destructive transition-colors"
+                <>
+                  {items.map((item) => (
+                    <div
+                      key={`${item.product.id}-${item.size}`}
+                      className="flex gap-4 pb-4 border-b border-border last:border-0"
                     >
-                      <X size={14} />
-                    </button>
+                      <img
+                        src={item.product.image}
+                        alt={item.product.name}
+                        className="w-20 h-24 object-cover bg-muted rounded-sm"
+                      />
+                      <div className="flex-1 flex flex-col justify-between">
+                        <div>
+                          <h3 className="font-display text-xs tracking-wide text-foreground">
+                            {item.product.name}
+                          </h3>
+                          <p className="font-body text-[10px] text-muted-foreground mt-0.5">
+                            Tam: {item.size}
+                          </p>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2.5">
+                            <button
+                              onClick={() =>
+                                updateQuantity(item.product.id, item.size, item.quantity - 1)
+                              }
+                              className="w-6 h-6 border border-border flex items-center justify-center text-foreground/60 hover:border-primary transition-colors"
+                            >
+                              <Minus size={12} />
+                            </button>
+                            <span className="font-body text-xs w-4 text-center">
+                              {item.quantity}
+                            </span>
+                            <button
+                              onClick={() =>
+                                updateQuantity(item.product.id, item.size, item.quantity + 1)
+                              }
+                              className="w-6 h-6 border border-border flex items-center justify-center text-foreground/60 hover:border-primary transition-colors"
+                            >
+                              <Plus size={12} />
+                            </button>
+                          </div>
+                          <p className="font-display text-sm text-foreground">
+                            {formatPrice(item.product.price * item.quantity)}
+                          </p>
+                        </div>
+                      </div>
+                      <button
+                        onClick={() => removeItem(item.product.id, item.size)}
+                        className="self-start text-muted-foreground/50 hover:text-destructive transition-colors"
+                      >
+                        <X size={14} />
+                      </button>
+                    </div>
+                  ))}
+
+                  {/* Observações */}
+                  <div className="pt-2">
+                    <label className="font-body text-[10px] tracking-[0.15em] uppercase text-muted-foreground mb-1.5 block">
+                      Observações (opcional)
+                    </label>
+                    <textarea
+                      value={notes}
+                      onChange={(e) => setNotes(e.target.value)}
+                      placeholder="Ex: Entregar após as 18h..."
+                      rows={2}
+                      className="w-full bg-muted/50 border border-border rounded-sm px-3 py-2 font-body text-xs text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-primary transition-colors resize-none"
+                    />
                   </div>
-                ))
+                </>
               )}
             </div>
 
@@ -121,7 +160,11 @@ const SideCart = () => {
                     {formatPrice(subtotal)}
                   </span>
                 </div>
-                <button className="w-full bg-primary text-primary-foreground font-body text-[10px] tracking-[0.25em] uppercase py-3.5 hover:bg-primary/90 transition-colors">
+                <button
+                  onClick={handleCheckout}
+                  className="w-full font-body text-[10px] tracking-[0.25em] uppercase py-3.5 transition-colors"
+                  style={{ backgroundColor: "#E3C79F", color: "#000" }}
+                >
                   Finalizar Compra
                 </button>
                 <button
