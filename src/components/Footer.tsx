@@ -2,6 +2,7 @@ import { Instagram, Facebook, Twitter, Mail, Phone, MapPin } from "lucide-react"
 import { toast } from "sonner";
 import azamiLogo from "@/assets/azami-logo.png";
 import azamiMonogram from "@/assets/azami-monogram.jpg";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const handleNewsletter = (e: React.FormEvent) => {
@@ -52,9 +53,15 @@ const Footer = () => {
           <div className="md:col-span-2">
             <h4 className="font-body text-[10px] tracking-[0.3em] uppercase text-[hsl(0_0%_92%)] mb-6">Ajuda</h4>
             <ul className="space-y-4">
-              {["Minha Conta", "Rastreio e Frete", "Devoluções", "Guia de Medidas", "Fale Conosco"].map((l) => (
-                <li key={l}>
-                  <a href="#" className="font-body text-xs hover:text-[hsl(0_0%_92%)] transition-colors">{l}</a>
+              {[
+                { label: "Minha Conta", path: "/conta" },
+                { label: "Rastreio e Frete", path: "/rastreio" },
+                { label: "Devoluções", path: "/devolucoes" },
+                { label: "Guia de Medidas", path: "/guia-de-medidas" },
+                { label: "Fale Conosco", path: "/contato" }
+              ].map((link) => (
+                <li key={link.label}>
+                  <Link to={link.path} className="font-body text-xs hover:text-[hsl(0_0%_92%)] transition-colors">{link.label}</Link>
                 </li>
               ))}
             </ul>

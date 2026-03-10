@@ -150,7 +150,7 @@ const ProductDetails = () => {
               <div className="mb-10">
                 <div className="flex items-center justify-between mb-3">
                   <span className="font-body text-[10px] tracking-wider uppercase text-foreground">Tamanho selecionado: <span className="text-muted-foreground ml-1">{selectedSize}</span></span>
-                  <button className="font-body text-[9px] uppercase tracking-wider text-muted-foreground hover:text-foreground underline transition-colors">Guia de Medidas</button>
+                  <Link to="/guia-de-medidas" className="font-body text-[9px] uppercase tracking-wider text-muted-foreground hover:text-foreground underline transition-colors">Guia de Medidas</Link>
                 </div>
                 <div className="grid grid-cols-4 gap-3">
                   {product.sizes.map((size) => (

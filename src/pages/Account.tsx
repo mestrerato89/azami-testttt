@@ -53,7 +53,7 @@ const Account = () => {
                 </div>
                 <button
                   type="submit"
-                  className="w-full font-body text-[10px] tracking-[0.2em] uppercase bg-primary text-primary-foreground py-4 hover:bg-primary/90 transition-colors mt-6"
+                  className="w-full font-body text-[10px] tracking-[0.2em] uppercase bg-primary text-primary-foreground py-4 hover:bg-primary/90 transition-colors mt-6 mono-shine"
                 >
                   Entrar
                 </button>
