@@ -18,7 +18,7 @@ const Footer = () => {
             <img 
               src={azamiMonogram} 
               alt="AZAMI" 
-              className="h-16 w-auto mb-6 object-contain brightness-0 invert opacity-90" 
+              className="h-20 w-auto mb-6 object-contain invert opacity-90" 
             />
             <p className="font-body text-xs leading-relaxed max-w-sm mb-8">
               Moda feminina autoral com curadoria de tendências. Peças que celebram a sua melhor versão com recortes estratégicos e modelagem perfeita para empoderar.
