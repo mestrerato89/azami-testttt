@@ -10,6 +10,7 @@ import SideWishlist from "@/components/SideWishlist";
 import WhatsAppFloating from "@/components/WhatsAppFloating";
 import Index from "./pages/Index";
 import Products from "./pages/Products";
+import ProductDetails from "./pages/ProductDetails";
 import Account from "./pages/Account";
 import NotFound from "./pages/NotFound";
 
@@ -30,6 +31,7 @@ const App = () => (
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/produtos" element={<Products />} />
+              <Route path="/produto/:id" element={<ProductDetails />} />
               <Route path="/conta" element={<Account />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />

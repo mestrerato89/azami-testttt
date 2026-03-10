@@ -7,6 +7,7 @@ import { useCart } from "@/context/CartContext";
 import { useWishlist } from "@/context/WishlistContext";
 import type { ProductSize } from "@/data/products";
 import { toast } from "sonner";
+import { Link } from "react-router-dom";
 
 interface ProductCardProps {
   product: Product;
@@ -32,12 +33,14 @@ const ProductCard = ({ product }: ProductCardProps) => {
     >
       {/* Image */}
       <div className="relative aspect-[3/4] overflow-hidden bg-muted">
-        <img
-          src={isHovered ? product.imageHover : product.image}
-          alt={product.name}
-          className="h-full w-full object-cover transition-all duration-700 ease-out"
-          loading="lazy"
-        />
+        <Link to={`/produto/${product.id}`} className="block h-full w-full">
+          <img
+            src={isHovered ? product.imageHover : product.image}
+            alt={product.name}
+            className="h-full w-full object-cover transition-all duration-700 ease-out"
+            loading="lazy"
+          />
+        </Link>
 
         {/* Best Seller badge */}
         {product.isBestSeller && (
@@ -97,14 +100,14 @@ const ProductCard = ({ product }: ProductCardProps) => {
       </div>
 
       {/* Info */}
-      <div className="mt-3 space-y-1">
+      <Link to={`/produto/${product.id}`} className="mt-3 space-y-1 block group-hover:opacity-80 transition-opacity">
         <h3 className="font-body text-[11px] md:text-xs tracking-wide text-foreground/80 truncate">
           {product.name}
         </h3>
         <p className="font-display text-sm md:text-base text-foreground">
           {formatPrice(product.price)}
         </p>
-      </div>
+      </Link>
     </motion.div>
   );
 };
