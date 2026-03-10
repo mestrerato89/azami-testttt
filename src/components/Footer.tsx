@@ -1,6 +1,7 @@
 import { Instagram, Facebook, Twitter, Mail, Phone, MapPin } from "lucide-react";
 import { toast } from "sonner";
 import azamiLogo from "@/assets/azami-logo.png";
+import azamiMonogram from "@/assets/azami-monogram.jpg";
 
 const Footer = () => {
   const handleNewsletter = (e: React.FormEvent) => {
@@ -15,9 +16,9 @@ const Footer = () => {
           {/* Brand */}
           <div className="md:col-span-4 pr-0 md:pr-8">
             <img 
-              src={azamiLogo} 
-              alt="AZAMI MODAS" 
-              className="h-10 w-auto mb-6 object-contain brightness-0 invert opacity-90" 
+              src={azamiMonogram} 
+              alt="AZAMI" 
+              className="h-16 w-auto mb-6 object-contain brightness-0 invert opacity-90" 
             />
             <p className="font-body text-xs leading-relaxed max-w-sm mb-8">
               Moda feminina autoral com curadoria de tendências. Peças que celebram a sua melhor versão com recortes estratégicos e modelagem perfeita para empoderar.
