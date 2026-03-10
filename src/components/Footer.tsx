@@ -79,13 +79,13 @@ const Footer = () => {
             </form>
 
             <div className="space-y-3.5">
-              <a href="mailto:contato@azamimodas.com" className="flex items-center gap-3 font-body text-xs hover:text-primary transition-colors">
+              <a href="mailto:azamimoda@gmail.com" className="flex items-center gap-3 font-body text-xs hover:text-primary transition-colors">
                 <Mail size={14} className="text-primary/70" />
-                contato@azamimodas.com.br
+                azamimoda@gmail.com
               </a>
-              <a href="https://api.whatsapp.com/send?phone=5521976425045" className="flex items-center gap-3 font-body text-xs hover:text-primary transition-colors">
+              <a href="https://api.whatsapp.com/send?phone=5511918439062" className="flex items-center gap-3 font-body text-xs hover:text-primary transition-colors">
                 <Phone size={14} className="text-primary/70" />
-                WhatsApp: (21) 97642-5045
+                WhatsApp: +55 11 91843-9062
               </a>
               <span className="flex items-center gap-3 font-body text-xs">
                 <MapPin size={14} className="text-primary/70" />
