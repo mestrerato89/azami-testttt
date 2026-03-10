@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useCart } from "@/context/CartContext";
 import { formatPrice } from "@/data/products";
 
-const WHATSAPP_NUMBER = "5521976425045";
+const WHATSAPP_NUMBER = "5511959656325";
 
 const SideCart = () => {
   const { items, isOpen, closeCart, removeItem, updateQuantity, totalItems, subtotal } = useCart();
@@ -18,13 +18,13 @@ const SideCart = () => {
       )
       .join("\n");
 
-    let message = `Olá! Gostaria de finalizar o meu pedido na AZAMI MODAS:\n\n*PRODUTOS SELECIONADOS:*\n\n${productLines}\n\n*SUBTOTAL:* ${formatPrice(subtotal)}`;
+    let message = `✨ Olá! Gostaria de finalizar o meu pedido na *AZAMI MODAS* 🛍️\n\n📦 *PRODUTOS SELECIONADOS:*\n\n${productLines}\n\n💰 *SUBTOTAL:* ${formatPrice(subtotal)}`;
 
     if (notes.trim()) {
-      message += `\n\n*OBSERVAÇÕES:* ${notes.trim()}`;
+      message += `\n\n📝 *OBSERVAÇÕES:* ${notes.trim()}`;
     }
 
-    message += `\n\nAguardo o retorno para combinar o envio!`;
+    message += `\n\n📩 Aguardo o retorno para combinar o envio! 💛`;
 
     const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
     closeCart();
