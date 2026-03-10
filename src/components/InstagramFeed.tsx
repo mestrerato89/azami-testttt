@@ -26,7 +26,7 @@ const InstagramFeed = () => {
         {images.map((img, i) => (
           <motion.a
             key={i}
-            href="https://instagram.com"
+            href="https://www.instagram.com/azamimodas/"
             target="_blank"
             rel="noopener noreferrer"
             initial={{ opacity: 0 }}

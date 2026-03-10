@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useCart } from "@/context/CartContext";
 import { formatPrice } from "@/data/products";
 
-const WHATSAPP_NUMBER = "5511959656325";
+const WHATSAPP_NUMBER = "5521976425045";
 
 const SideCart = () => {
   const { items, isOpen, closeCart, removeItem, updateQuantity, totalItems, subtotal } = useCart();
@@ -26,7 +26,7 @@ const SideCart = () => {
 
     message += `\n\n📩 Aguardo o retorno para combinar o envio! 💛`;
 
-    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    const url = `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(message)}`;
     closeCart();
     window.open(url, "_blank");
   };

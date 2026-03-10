@@ -4,6 +4,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import azamiLogo from "@/assets/azami-logo.png";
 import { useCart } from "@/context/CartContext";
+import { useWishlist } from "@/context/WishlistContext";
+import SearchModal from "./SearchModal";
 
 const navLinks = [
   { label: "Todos", href: "/produtos" },
@@ -14,8 +16,10 @@ const navLinks = [
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { openCart, totalItems } = useCart();
+  const { openWishlist, totalItems: wishlistItems } = useWishlist();
   const location = useLocation();
 
   useEffect(() => {
@@ -66,6 +70,7 @@ const Header = () => {
           {/* Right icons */}
           <div className="flex items-center gap-4">
             <button
+              onClick={() => setIsSearchOpen(true)}
               className="text-[hsl(0_0%_35%)] hover:text-[hsl(0_0%_8%)] transition-colors"
               aria-label="Buscar"
             >
@@ -79,10 +84,16 @@ const Header = () => {
               <User size={16} />
             </Link>
             <button
-              className="hidden md:block text-[hsl(0_0%_35%)] hover:text-[hsl(0_0%_8%)] transition-colors"
+              onClick={openWishlist}
+              className="hidden md:block text-[hsl(0_0%_35%)] hover:text-[hsl(0_0%_8%)] transition-colors relative"
               aria-label="Favoritos"
             >
               <Heart size={16} />
+              {wishlistItems > 0 && (
+                <span className="absolute -top-1.5 -right-2 bg-primary text-primary-foreground text-[8px] font-body font-semibold w-3.5 h-3.5 rounded-full flex items-center justify-center">
+                  {wishlistItems}
+                </span>
+              )}
             </button>
             <button
               onClick={openCart}
@@ -119,17 +130,35 @@ const Header = () => {
                   {link.label}
                 </Link>
               ))}
-              <Link
-                to="/conta"
-                className="font-body text-xs tracking-[0.25em] uppercase text-[hsl(0_0%_35%)] hover:text-[hsl(0_0%_8%)] transition-colors flex items-center gap-2"
-              >
-                <User size={14} />
-                Minha Conta
-              </Link>
+              <div className="flex items-center justify-between border-t border-[hsl(0_0%_92%)] pt-5 mt-2">
+                <Link
+                  to="/conta"
+                  className="font-body text-xs tracking-[0.25em] uppercase text-[hsl(0_0%_35%)] hover:text-[hsl(0_0%_8%)] transition-colors flex items-center gap-2"
+                >
+                  <User size={14} />
+                  Minha Conta
+                </Link>
+                <button
+                  onClick={() => setIsSearchOpen(true)}
+                  className="font-body text-xs tracking-[0.25em] uppercase text-[hsl(0_0%_35%)] hover:text-[hsl(0_0%_8%)] transition-colors flex items-center gap-2"
+                >
+                  <Search size={14} />
+                  Buscar
+                </button>
+                <button
+                  onClick={openWishlist}
+                  className="font-body text-xs tracking-[0.25em] relative uppercase text-[hsl(0_0%_35%)] hover:text-[hsl(0_0%_8%)] transition-colors flex items-center gap-2"
+                >
+                  <Heart size={14} />
+                  {wishlistItems > 0 && <span className="absolute -top-1.5 -right-2 bg-primary text-primary-foreground text-[8px] font-body font-semibold w-3.5 h-3.5 rounded-full flex items-center justify-center">{wishlistItems}</span>}
+                </button>
+              </div>
             </div>
           </motion.nav>
         )}
       </AnimatePresence>
+
+      <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
     </header>
   );
 };

@@ -1,66 +1,108 @@
+import { Instagram, Facebook, Twitter, Mail, Phone, MapPin } from "lucide-react";
+import { toast } from "sonner";
 import azamiLogo from "@/assets/azami-logo.png";
 
 const Footer = () => {
+  const handleNewsletter = (e: React.FormEvent) => {
+    e.preventDefault();
+    toast.success("E-mail cadastrado com sucesso! ✨");
+  };
+
   return (
-    <footer className="bg-[hsl(0_0%_4%)] text-[hsl(30_15%_70%)] border-t border-[hsl(0_0%_10%)]">
-      <div className="container mx-auto px-6 md:px-12 py-16 md:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8">
+    <footer className="bg-[hsl(0_0%_4%)] text-[hsl(30_15%_70%)] border-t border-[hsl(0_0%_10%)] pb-20 md:pb-0">
+      <div className="container mx-auto px-6 md:px-12 pt-16 md:pt-20 pb-10">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
           {/* Brand */}
-          <div className="md:col-span-1">
-            <img src={azamiLogo} alt="AZAMI MODAS" className="h-9 w-auto mb-5 object-contain" />
-            <p className="font-body text-xs leading-relaxed">
-              Moda feminina autoral com curadoria de tendências. Peças que celebram a sua melhor versão.
+          <div className="md:col-span-4 pr-0 md:pr-8">
+            <img 
+              src={azamiLogo} 
+              alt="AZAMI MODAS" 
+              className="h-10 w-auto mb-6 object-contain brightness-0 invert opacity-90" 
+            />
+            <p className="font-body text-xs leading-relaxed max-w-sm mb-8">
+              Moda feminina autoral com curadoria de tendências. Peças que celebram a sua melhor versão com recortes estratégicos e modelagem perfeita para empoderar.
             </p>
+            <div className="flex items-center gap-4">
+              <a href="https://www.instagram.com/azamimodas/" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded bg-[hsl(0_0%_8%)] border border-[hsl(0_0%_15%)] flex items-center justify-center hover:border-primary hover:text-primary transition-colors" aria-label="Instagram">
+                <Instagram size={15} />
+              </a>
+              <a href="#" className="w-9 h-9 rounded bg-[hsl(0_0%_8%)] border border-[hsl(0_0%_15%)] flex items-center justify-center hover:border-primary hover:text-primary transition-colors" aria-label="Facebook">
+                <Facebook size={15} />
+              </a>
+              <a href="#" className="w-9 h-9 rounded bg-[hsl(0_0%_8%)] border border-[hsl(0_0%_15%)] flex items-center justify-center hover:border-primary hover:text-primary transition-colors" aria-label="Twitter">
+                <Twitter size={15} />
+              </a>
+            </div>
           </div>
 
-          <div>
-            <h4 className="font-body text-[10px] tracking-[0.3em] uppercase text-[hsl(30_15%_92%)] mb-5">Loja</h4>
-            <ul className="space-y-3">
+          {/* Links 1 */}
+          <div className="md:col-span-2">
+            <h4 className="font-body text-[10px] tracking-[0.3em] uppercase text-[hsl(30_15%_92%)] mb-6">Explorar</h4>
+            <ul className="space-y-4">
               {["Night Collection", "Beach Collection", "Best Sellers", "Promoções"].map((l) => (
                 <li key={l}>
-                  <a href="#" className="font-body text-xs hover:text-primary transition-colors">{l}</a>
+                  <a href="#" className="font-body text-xs hover:text-[hsl(30_15%_92%)] transition-colors">{l}</a>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div>
-            <h4 className="font-body text-[10px] tracking-[0.3em] uppercase text-[hsl(30_15%_92%)] mb-5">Ajuda</h4>
-            <ul className="space-y-3">
-              {["Trocas e Devoluções", "Frete e Prazos", "Tabela de Medidas", "FAQ"].map((l) => (
+          {/* Links 2 */}
+          <div className="md:col-span-2">
+            <h4 className="font-body text-[10px] tracking-[0.3em] uppercase text-[hsl(30_15%_92%)] mb-6">Ajuda</h4>
+            <ul className="space-y-4">
+              {["Minha Conta", "Rastreio e Frete", "Devoluções", "Guia de Medidas", "Fale Conosco"].map((l) => (
                 <li key={l}>
-                  <a href="#" className="font-body text-xs hover:text-primary transition-colors">{l}</a>
+                  <a href="#" className="font-body text-xs hover:text-[hsl(30_15%_92%)] transition-colors">{l}</a>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Newsletter */}
-          <div>
-            <h4 className="font-body text-[10px] tracking-[0.3em] uppercase text-[hsl(30_15%_92%)] mb-5">Newsletter</h4>
-            <p className="font-body text-xs mb-4">Receba novidades e ofertas exclusivas.</p>
-            <div className="flex">
+          {/* Newsletter / Contact */}
+          <div className="md:col-span-4">
+            <h4 className="font-body text-[10px] tracking-[0.3em] uppercase text-[hsl(30_15%_92%)] mb-6">Newsletter VIP</h4>
+            <p className="font-body text-xs mb-5 leading-relaxed">
+              Assine para receber acesso antecipado a novas coleções e ofertas exclusivas para clientes VIP.
+            </p>
+            <form onSubmit={handleNewsletter} className="flex mb-8">
               <input
                 type="email"
+                required
                 placeholder="Seu e-mail"
-                className="flex-1 bg-[hsl(0_0%_8%)] border border-[hsl(0_0%_15%)] px-4 py-2.5 font-body text-xs text-[hsl(30_15%_92%)] placeholder:text-[hsl(30_8%_40%)] focus:outline-none focus:border-primary transition-colors"
+                className="flex-1 bg-[hsl(0_0%_6%)] border border-[hsl(0_0%_18%)] px-4 py-3 font-body text-xs text-[hsl(30_15%_92%)] placeholder:text-[hsl(30_8%_40%)] focus:outline-none focus:border-primary transition-colors"
               />
-              <button className="bg-primary text-primary-foreground font-body text-[10px] tracking-[0.15em] uppercase px-5 py-2.5 hover:bg-primary/90 transition-colors">
-                OK
+              <button type="submit" className="bg-primary text-primary-foreground font-body text-[10px] tracking-[0.15em] uppercase px-6 py-3 hover:bg-primary/90 transition-colors">
+                Assinar
               </button>
+            </form>
+
+            <div className="space-y-3.5">
+              <a href="mailto:contato@azamimodas.com" className="flex items-center gap-3 font-body text-xs hover:text-primary transition-colors">
+                <Mail size={14} className="text-primary/70" />
+                contato@azamimodas.com.br
+              </a>
+              <a href="https://api.whatsapp.com/send?phone=5521976425045" className="flex items-center gap-3 font-body text-xs hover:text-primary transition-colors">
+                <Phone size={14} className="text-primary/70" />
+                WhatsApp: (21) 97642-5045
+              </a>
+              <span className="flex items-center gap-3 font-body text-xs">
+                <MapPin size={14} className="text-primary/70" />
+                Rio de Janeiro, RJ — By Appointment Only
+              </span>
             </div>
           </div>
         </div>
 
         {/* Bottom */}
-        <div className="mt-16 pt-6 border-t border-[hsl(0_0%_10%)] flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="font-body text-[10px] tracking-wider">
-            © 2026 AZAMI MODAS. Todos os direitos reservados.
+        <div className="mt-16 pt-8 border-t border-[hsl(0_0%_12%)] flex flex-col md:flex-row items-center justify-between gap-6">
+          <p className="font-body text-[10px] tracking-wider text-[hsl(0_0%_50%)]">
+            © 2026 AZAMI MODAS. Todos os direitos reservados. CNPJ: 00.000.000/0001-00.
           </p>
           <div className="flex items-center gap-6">
-            {["Termos de Uso", "Política de Privacidade"].map((l) => (
-              <a key={l} href="#" className="font-body text-[10px] hover:text-primary tracking-wider transition-colors">{l}</a>
-            ))}
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Mastercard_2019_logo.svg/200px-Mastercard_2019_logo.svg.png" alt="Mastercard" className="h-4 opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/200px-Visa_Inc._logo.svg.png" alt="Visa" className="h-3 opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Pix_logo.svg/200px-Pix_logo.svg.png" alt="Pix" className="h-4 opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all" />
           </div>
         </div>
       </div>

@@ -4,7 +4,9 @@ import { motion } from "framer-motion";
 import type { Product } from "@/data/products";
 import { formatPrice } from "@/data/products";
 import { useCart } from "@/context/CartContext";
+import { useWishlist } from "@/context/WishlistContext";
 import type { ProductSize } from "@/data/products";
+import { toast } from "sonner";
 
 interface ProductCardProps {
   product: Product;
@@ -14,6 +16,9 @@ const ProductCard = ({ product }: ProductCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const [selectedSize, setSelectedSize] = useState<ProductSize>(product.sizes[0]);
   const { addItem } = useCart();
+  const { toggleItem, isWishlisted } = useWishlist();
+  
+  const wishlisted = isWishlisted(product.id);
 
   return (
     <motion.div
@@ -43,10 +48,19 @@ const ProductCard = ({ product }: ProductCardProps) => {
 
         {/* Favorite */}
         <button
-          className="absolute top-3 right-3 p-1.5 text-foreground/60 hover:text-primary transition-colors"
+          onClick={(e) => {
+            e.preventDefault();
+            toggleItem(product);
+            if (!wishlisted) {
+              toast.success(`${product.name} salvo nos Favoritos 💛`);
+            } else {
+              toast(`${product.name} removido dos Favoritos`);
+            }
+          }}
+          className={`absolute top-3 right-3 p-1.5 transition-colors z-10 ${wishlisted ? "text-primary hover:text-primary/70" : "text-foreground/60 hover:text-primary"}`}
           aria-label="Favoritar"
         >
-          <Heart size={16} />
+          <Heart size={16} fill={wishlisted ? "currentColor" : "none"} />
         </button>
 
         {/* Quick Add overlay */}
