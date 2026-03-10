@@ -63,7 +63,7 @@ const Header = () => {
             <img
               src={azamiLogo}
               alt="AZAMI MODAS"
-              className="h-8 md:h-12 w-auto object-contain rounded-sm"
+              className="h-10 md:h-16 w-auto object-contain rounded-sm"
             />
           </Link>
 
