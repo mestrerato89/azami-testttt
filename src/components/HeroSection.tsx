@@ -58,7 +58,7 @@ const HeroSection = () => {
                 className="flex flex-col sm:flex-row items-start gap-5 sm:gap-6"
               >
                 <a
-                  href="#night"
+                  href="/produtos"
                   className="font-body text-[10px] tracking-[0.3em] uppercase bg-[hsl(38_55%_75%)] text-[hsl(0_0%_4%)] px-9 py-4 text-center hover:bg-[hsl(38_55%_68%)] transition-all duration-400 hover:shadow-gold"
                 >
                   Conferir Colecção
