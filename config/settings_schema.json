@@ -1,0 +1,21 @@
+[
+  {
+    "name": "General",
+    "theme_author": "AZAMI",
+    "theme_name": "Azami Theme",
+    "theme_version": "1.0.0",
+    "theme_documentation_url": "https://help.shopify.com",
+    "theme_support_url": "https://support.shopify.com"
+  },
+  {
+    "name": "Logo",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon",
+        "info": "Will be scaled down to 32 x 32px"
+      }
+    ]
+  }
+]

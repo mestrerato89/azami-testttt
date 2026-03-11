@@ -61,7 +61,7 @@ const HeroSection = () => {
                   href="/produtos"
                   className="font-body text-[10px] tracking-[0.3em] uppercase bg-white text-black px-9 py-4 text-center hover:bg-white/90 transition-all duration-400 mono-shine"
                 >
-                  Conferir Colecção
+                  Conferir Coleção
                 </a>
                 <a
                   href="#bestsellers"
