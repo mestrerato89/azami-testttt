@@ -1,5 +1,6 @@
 {
   "name": "Cart",
   "wrapper": "main",
-  "sections": {}
+  "sections": {},
+  "order": []
 }

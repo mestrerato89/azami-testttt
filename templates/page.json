@@ -1,5 +1,6 @@
 {
   "name": "Page",
   "wrapper": "main",
-  "sections": {}
+  "sections": {},
+  "order": []
 }

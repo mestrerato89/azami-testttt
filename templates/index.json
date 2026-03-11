@@ -1,5 +1,6 @@
 {
   "name": "Home page",
   "wrapper": "main",
-  "sections": {}
+  "sections": {},
+  "order": []
 }
