@@ -1,4 +1,10 @@
 {
-  "sections": {},
-  "order": []
+  "sections": {
+    "main": {
+      "type": "main-product"
+    }
+  },
+  "order": [
+    "main"
+  ]
 }
